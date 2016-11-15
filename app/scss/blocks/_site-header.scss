@@ -1,0 +1,103 @@
+.site-header {
+  border-top: 5px solid $accent-color;
+}
+
+.site-header__top {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-header__mobile-menu-wrapper {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.site-header__phone-wrapper {
+  margin-bottom: 1rem;
+}
+
+.site-header__phone {
+  font-size: rem(18);
+  text-decoration: none;
+  color: currentColor;
+}
+
+.site-header__callback {
+  display: block;
+  font-size: rem(9);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-header__logo {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  order: -1;
+}
+
+.site-header__for-partners {
+  margin-right: -26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: rem(12);
+  color: currentColor;
+  position: relative;
+  line-height: 1.3;
+  background: linear-gradient(to right, lighten($base-color, 50%) 50%, transparent 0) repeat-x bottom;
+  background-size: 2px 1px;
+  letter-spacing: 0.04em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    padding-right: 10px;
+    top: 1px;
+    right: 100%;
+    width: 16px;
+    height: 16px;
+    background: url("images/svg-icons/bubble.svg") no-repeat left;
+  }
+}
+
+.site-header__main-nav-wrapper {
+  background-color: $light-color;
+}
+
+
+@media (min-width: $media-mobile) {
+  .site-header__phone-wrapper {
+    margin-bottom: 0;
+  }
+
+  .site-header__logo {
+    margin-bottom: 0;
+    order: 0;
+    width: auto;
+
+  }
+}
+
+
+
+@media (min-width: $media-tablet) {
+  .site-header__top {
+    padding-top: 50px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .site-header__mobile-menu-wrapper {
+    display: none;
+  }
+
+  .site-header__for-partners {
+    margin-right: 0;
+  }
+}

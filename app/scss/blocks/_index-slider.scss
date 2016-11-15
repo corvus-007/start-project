@@ -1,0 +1,46 @@
+.index-slider {
+
+  .slick-dots {
+    @include clear-list();
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin-right: 0.5em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    button {
+      display: block;
+      padding: 0;
+      overflow: hidden;
+      width: rem(13);
+      height: rem(13);
+      border: 2px solid $accent-color;
+      text-indent: -1000px;
+      background: none;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .slick-active button {
+      cursor: default;
+      background: $accent-color;
+    }
+  }
+
+}
+
+.index-slider__item {
+  height: 0;
+  padding-top: calc(350 / 1280 * 100vw);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

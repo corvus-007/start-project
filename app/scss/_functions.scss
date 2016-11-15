@@ -1,0 +1,31 @@
+$context-default: $base-font-size;
+
+// Em converter
+
+@function em($target, $context: $context-default) {
+  @if (unitless($target)) {
+    $target: $target * 1px;
+  }
+  
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  
+  @return ($target / $context) * 1em;
+}
+
+
+// Rem converter
+
+@function rem($target, $context: $context-default) {
+  @if (unitless($target)) {
+    $target: $target * 1px;
+  }
+  
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  
+  @return ($target / $context) * 1rem;
+}
+

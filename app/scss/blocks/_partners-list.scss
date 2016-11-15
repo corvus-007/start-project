@@ -1,0 +1,37 @@
+.partners-list {
+  @include clear-list();
+  margin-top: 2rem;
+  margin-left: -10px;
+  margin-right: -10px;
+  font-size: 0;
+}
+
+.partners-item {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: percentage(1/2);
+  box-sizing: border-box;
+}
+
+
+@media (min-width: $media-mobile) {
+  .partners-item {
+    width: percentage(1/3);
+  }
+}
+
+
+@media (min-width: $media-tablet) {
+  .partners-item {
+    width: percentage(1/5);
+  }
+}
+
+
+@media (min-width: $media-laptop) {
+  .partners-item {
+    width: percentage(1/7);
+  }
+}

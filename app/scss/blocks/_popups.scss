@@ -1,0 +1,48 @@
+.popup {
+  position: relative;
+  margin: 20px auto;
+  padding: 3rem 2rem;
+  max-width: 400px;
+  width: auto;
+  border-top: 5px solid $accent-color;
+  background: #fff;
+}
+
+.popup__title {
+  margin: 0;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 1.65rem;
+}
+
+
+/* overlay at start */
+.popup-fade.mfp-bg {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+/* overlay animate in */
+.popup-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+/* overlay animate out */
+.popup-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+/* content at start */
+.popup-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+/* content animate it */
+.popup-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+/* content animate out */
+.popup-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}

@@ -1,0 +1,42 @@
+.popup-phones {
+  text-align: center;
+}
+
+.popup-phones__list {
+  margin-bottom: 2rem;
+  line-height: 1.4;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.popup-phones__location {
+  position: relative;
+  margin-bottom: 0.5em;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    left: 0;
+    margin: auto;
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    background: url("images/svg-icons/pin.svg") no-repeat;
+    background-size: contain;
+  }
+}
+
+.popup-phones__field {
+  margin-left: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.popup-phones__phone {
+  text-decoration: none;
+  color: currentColor;
+}

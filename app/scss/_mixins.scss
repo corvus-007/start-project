@@ -1,0 +1,47 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clear-list() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/// Подстраивание изображений (и не только) под заданные пропорции
+@mixin responsiveObject($target-width, $target-height) {
+  display: block;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-top: percentage($target-height / $target-width);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    // Dependens on Modernizer
+    // Context .objectfit
+    .no-objectfit & {
+      height: auto;
+    }
+    // Context .no-objectfit.csstransforms
+    .no-objectfit.csstransforms & {
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+  
+}

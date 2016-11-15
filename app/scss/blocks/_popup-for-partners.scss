@@ -1,0 +1,34 @@
+.popup-for-partners {
+  text-align: center;
+}
+
+.popup-for-partners__list {
+  margin-bottom: 2rem;
+  line-height: 1.4;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  [href^="tel:"] {
+    color: currentColor;
+    text-decoration: none;
+  }
+}
+
+.popup-for-partners__name {
+  margin-bottom: 0.5em;
+}
+
+.popup-for-partners__field {
+  margin-left: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+
+
+.popup-for-partners__phone {
+  text-decoration: none;
+  color: currentColor;
+}

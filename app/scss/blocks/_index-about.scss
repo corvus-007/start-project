@@ -1,0 +1,28 @@
+.index-about {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+.index-about__text {
+  width: 85%;
+  max-width: 960px;
+
+  p {
+    margin-bottom: 2em;
+  }
+}
+
+@media (min-width: $media-tablet) {
+  .index-about__text {
+    width: 70%;
+    column-count: 2;
+    column-gap: 90px;
+    column-width: 25%;
+  }
+}
+
+@media (min-width: $media-laptop) {
+  .index-about__text {
+    width: 55%;
+  }
+}
