@@ -1,21 +1,23 @@
-let gulp = require('gulp');
-let sass = require('gulp-sass');
-let plumber =require('gulp-plumber');
-let postcss = require('gulp-postcss');
-let autoprefixer = require('autoprefixer');
-let server = require('browser-sync');
-let mqpacker = require('css-mqpacker');
-let minify = require('gulp-csso');
-let fileinclude = require('gulp-file-include');
-let rename = require('gulp-rename');
-let imagemin = require('gulp-imagemin');
-let svgstore = require('gulp-svgstore');
-let svgmin = require('gulp-svgmin');
-let run = require('run-sequence');
-let del = require('del');
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var plumber =require('gulp-plumber');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var server = require('browser-sync');
+var mqpacker = require('css-mqpacker');
+var minify = require('gulp-csso');
+var fileinclude = require('gulp-file-include');
+var rename = require('gulp-rename');
+var imagemin = require('gulp-imagemin');
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var run = require('run-sequence');
+var del = require('del');
 
 
-gulp.task('style', () => {
+gulp.task('style', function() {
   gulp.src('app/scss/style.scss')
     .pipe(plumber())
     .pipe(sass())
@@ -34,34 +36,37 @@ gulp.task('style', () => {
       })
       ])
     )
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('build/'))
     .pipe(minify())
     .pipe(rename({
       suffix: '-min'
     }))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('build/'))
     .pipe(server.reload({stream: true}));
 });
 
-gulp.task('script', () => {
-  gulp.src('app/js/**/*.js')
+gulp.task('plugins-js', function() {
+  gulp.src('app/js/plugins/*.js')
+    .pipe(concat('plugins.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('build/js'))
     .pipe(server.reload({stream: true}));
 });
 
-gulp.task('fileinclude', () => {
+gulp.task('copy-script', function() {
+  gulp.src(['app/js/*.js', '!app/js/plugins/**'])
+    .pipe(gulp.dest('build/js'))
+    .pipe(server.reload({stream: true}));
+});
+
+gulp.task('fileinclude', function() {
   gulp.src('app/*.html')
     .pipe(fileinclude())
     .pipe(gulp.dest('build'));
 });
 
-// gulp.task('copy-html', () => {
-//   gulp.src('app/*.html')
-//     .pipe(gulp.dest('build'));
-// });
-
-gulp.task('images', () => {
-  return gulp.src('build/img/**/*.{png, jpg, gif}')
+gulp.task('images', function() {
+  return gulp.src('build/img/**/*.{png,jpg,gif}')
     .pipe(imagemin([
       imagemin.optipng({optimizationLevel: 3}),
       imagemin.jpegtran({progressive: true})
@@ -70,7 +75,7 @@ gulp.task('images', () => {
 });
 
 
-gulp.task('symbols', () => {
+gulp.task('symbols', function() {
   return gulp.src('build/img/svg-symbols/*.svg')
     .pipe(svgmin())
     .pipe(svgstore({
@@ -80,26 +85,15 @@ gulp.task('symbols', () => {
     .pipe(gulp.dest('build/img'));
 });
 
-
-gulp.task('serve', () => {
-  server.init({
-    server: "build"
-  });
-
-  gulp.watch('app/scss/**/*.scss', ['scss']);
-  // gulp.watch('app/js/**/*.js', ['js']);
-  gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', server.reload);
-});
-
-gulp.task('clean', () => {
+gulp.task('clean', function() {
   return del('build');
 });
 
-gulp.task('copy', () => {
+gulp.task('copy', function() {
   return gulp.src([
-      'app/fonts/**/*.{woff, woff2}',
+      'app/fonts/**/*.{woff,woff2}',
       'app/img/**',
-      'app/js/**',
+//      'app/js/**',
       'app/*.html'
     ], {
       base: 'app',
@@ -108,13 +102,26 @@ gulp.task('copy', () => {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build', (fn) => {
+gulp.task('build', function(fn) {
   run(
     'clean',
     'copy',
     'style',
+    'plugins-js',
+    'copy-script',
     'fileinclude',
     'images',
     'symbols',
     fn);
+});
+
+gulp.task('serve', function() {
+  server.init({
+    server: "build"
+  });
+
+  gulp.watch('app/scss/**/*.scss', ['style']);
+  gulp.watch('app/js/plugins/*.js', ['plugins-js']);
+  gulp.watch('app/js/script.js', ['copy-script']);
+  gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', server.reload);
 });
