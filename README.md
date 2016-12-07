@@ -1,5 +1,11 @@
 # start-project
-Стартовый проект
+Структура:
+* app/
+* build/
+* other/
 
-Установка
-npm i
+
+1. Установка модулей `npm i`
+2. Запуск `npm start`
+
+Сборка проекта `npm build`
