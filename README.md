@@ -1,21 +1,24 @@
 # start-project
 Структура:
+```
 app/
-  |--scss/
-    |--global/
-    |--blocks/
-    |--vendors/
-    |--variables.scss
-    |--functions.scss
-    |--mixins.scss
-    |--styles.scss
-  |--img/
-  |--js/
-    |--plugins/
-  |--fonts/
-  |--blocks (инклюды)
+|--scss/
+   |--global/
+   |--blocks/
+   |--vendors/
+   |--variables.scss
+   |--functions.scss
+   |--mixins.scss
+   |--styles.scss
+|--img/
+|--js/
+   |--plugins/
+|--fonts/
+|--blocks (инклюды)
+  
 build/
 other/
+```
 
 ## Установка
 1. Перейти в родительскую папку проектов
