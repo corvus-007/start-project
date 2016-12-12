@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var plumber =require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var server = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var mqpacker = require('css-mqpacker');
 var minify = require('gulp-csso');
 var fileinclude = require('gulp-file-include');
@@ -18,8 +18,12 @@ var del = require('del');
 
 
 gulp.task('style', function() {
-  gulp.src('app/scss/style.scss')
-    .pipe(plumber())
+  return gulp.src('app/scss/style.scss')
+    .pipe(plumber({
+      errorHandler: function(err) {
+        console.log(err);
+      }
+    }))
     .pipe(sass())
     .pipe(postcss([
       autoprefixer({
@@ -42,7 +46,7 @@ gulp.task('style', function() {
       suffix: '-min'
     }))
     .pipe(gulp.dest('build/'))
-    .pipe(server.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('plugins-js', function() {
@@ -50,13 +54,13 @@ gulp.task('plugins-js', function() {
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('build/js'))
-    .pipe(server.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('copy-script', function() {
-  gulp.src(['app/js/*.js', '!app/js/plugins/**'])
+  gulp.src(['app/js/*.{js,json}', '!app/js/plugins/**'])
     .pipe(gulp.dest('build/js'))
-    .pipe(server.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('fileinclude', function() {
@@ -116,12 +120,16 @@ gulp.task('build', function(fn) {
 });
 
 gulp.task('serve', function() {
-  server.init({
-    server: "build"
+  browserSync.init({
+    server: "./build"
   });
 
-  gulp.watch('app/scss/**/*.scss', ['style']);
+  gulp.watch('app/scss/**/*.scss', function() {
+    setTimeout(function() {
+      gulp.start('style');
+    }, 500);
+  });
   gulp.watch('app/js/plugins/*.js', ['plugins-js']);
   gulp.watch('app/js/script.js', ['copy-script']);
-  gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', server.reload);
+  gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', browserSync.reload);
 });

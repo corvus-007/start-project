@@ -1,0 +1,46 @@
+@mixin buttonColor($bgColor: $buttonColorDefault, $textColor: #fff) {
+
+  color: $textColor;
+  background-color: $bgColor;
+
+  &:hover,
+  &:focus {
+    color: $textColor;
+    background-color: mix(#fff, $bgColor, 7%);
+    outline: none;
+  }
+
+  &:active {
+    color: $textColor;
+    background-color: mix(#000, $bgColor, 7%);
+  }
+}
+
+.button {
+  @include border-rounded();
+  @include buttonColor($accent-color, $base-color);
+  display: inline-block;
+  padding: em(13, 20) em(33, 20);
+  border: 2px solid transparent;
+  text-align: center;
+  font-family: inherit;
+  font-size: rem(20);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: normal;
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+
+  &--small {
+    font-size: rem(15);
+    padding: em(14, 15) em(25, 15);
+  }
+}
+
+.button--dark {
+  @include buttonColor(#2c2929);
+}

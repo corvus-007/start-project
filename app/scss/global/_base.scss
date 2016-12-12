@@ -1,0 +1,79 @@
+html {
+  font-size: $base-font-size;
+}
+
+@media (min-width: $media-mobile) {
+
+}
+
+@media (min-width: $media-tablet) {
+
+}
+
+@media (min-width: $media-laptop) {
+
+}
+
+@media (min-width: $media-laptop-l) {
+
+}
+
+body {
+  font-family: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  line-height: normal;
+  background-color: #fff;
+  color: $base-color;
+}
+
+.container {
+  @include container();
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  outline: none;
+
+  &:not([class]) {
+    border-bottom: 1px solid;
+  }
+
+  &:hover {
+    color: mix(#000, $link-color, 10%);
+  }
+}
+
+.dotted-link {
+  border-bottom: 1px solid transparent;
+  background-image: linear-gradient(to right, currentColor 1px, transparent 0);
+  background-position: 0 100%;
+  background-size: 3px 1px;
+  background-repeat: repeat-x;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.6em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.visuallyhidden:not(:focus):not(:active) {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

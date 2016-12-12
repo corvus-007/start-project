@@ -28,4 +28,3 @@ $context-default: $base-font-size;
   
   @return ($target / $context) * 1rem;
 }
-
