@@ -2,6 +2,7 @@ $base-color: #232020;
 $accent-color: #f0d38f;
 
 $success-color: #71dd5c;
+$info-color: #cef;
 $warning-color: yellow;
 $danger-color: red;
 
@@ -12,8 +13,8 @@ $link-color: $accent-color;
 
 $base-font-size: 16px;
 
-$media-mobile: 480px;
-$media-tablet: 768px;
-$media-laptop: 1024px;
-$media-laptop-l: 1440px;
-$media-laptop-xl: 1920px;
+$media-mobile-up: 480px;
+$media-tablet-up: 768px;
+$media-laptop-up: 1024px;
+$media-laptop-l-up: 1440px;
+$media-laptop-xl-up: 1920px;

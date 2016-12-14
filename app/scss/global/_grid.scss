@@ -22,7 +22,7 @@ $grid-gutter: 10;
   }
 }
 
-@media (min-width: $media-mobile) {
+@media (min-width: $media-mobile-up) {
 
   @for $i from 1 through $grid-count {
     .col-mobile-#{$i} {
@@ -32,7 +32,7 @@ $grid-gutter: 10;
 
 }
 
-@media (min-width: $media-tablet) {
+@media (min-width: $media-tablet-up) {
 
   @for $i from 1 through $grid-count {
     .col-tablet-#{$i} {
@@ -42,7 +42,7 @@ $grid-gutter: 10;
 
 }
 
-@media (min-width: $media-laptop) {
+@media (min-width: $media-laptop-up) {
 
   @for $i from 1 through $grid-count {
     .col-laptop-#{$i} {
@@ -52,7 +52,7 @@ $grid-gutter: 10;
 
 }
 
-@media (min-width: $media-laptop-l) {
+@media (min-width: $media-laptop-l-up) {
   
   @for $i from 1 through $grid-count {
     .col-laptop-l-#{$i} {

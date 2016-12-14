@@ -87,7 +87,7 @@
 
 }
 
-@media (min-width: $media-tablet) {
+@media (min-width: $media-tablet-up) {
   .mobile-menu {
     display: none;
   }

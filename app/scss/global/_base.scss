@@ -2,19 +2,19 @@ html {
   font-size: $base-font-size;
 }
 
-@media (min-width: $media-mobile) {
+@media (min-width: $media-mobile-up) {
 
 }
 
-@media (min-width: $media-tablet) {
+@media (min-width: $media-tablet-up) {
 
 }
 
-@media (min-width: $media-laptop) {
+@media (min-width: $media-laptop-up) {
 
 }
 
-@media (min-width: $media-laptop-l) {
+@media (min-width: $media-laptop-l-up) {
 
 }
 

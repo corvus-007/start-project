@@ -9,7 +9,7 @@
   }
 }
 
-@media (min-width: $media-tablet) {
+@media (min-width: $media-tablet-up) {
   .archive-events {
     display: flex;
     flex-wrap: wrap;
