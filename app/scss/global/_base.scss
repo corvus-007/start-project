@@ -53,6 +53,35 @@ a {
   background-repeat: repeat-x;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+h1,
+.h1 {
+  font-size: rem(32);
+}
+
+h2,
+.h2 {
+  font-size: rem(27);
+}
+
+h3,
+.h3 {
+  font-size: rem(24);
+}
+
+h4,
+.h4 {
+  font-size: rem(21);
+}
+
+
 p {
   margin-top: 0;
   margin-bottom: 0.6em;
