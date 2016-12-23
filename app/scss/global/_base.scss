@@ -1,21 +1,25 @@
 html {
   font-size: $base-font-size;
-}
+  
+  @media (min-width: $media-mobile-up) {
+    font-size: $base-font-size * 1;
+  }
 
-@media (min-width: $media-mobile-up) {
+  @media (min-width: $media-tablet-up) {
+    font-size: $base-font-size * 1;
+  }
 
-}
+  @media (min-width: $media-laptop-up) {
+    font-size: $base-font-size * 1;
+  }
 
-@media (min-width: $media-tablet-up) {
+  @media (min-width: $media-laptop-l-up) {
+    font-size: $base-font-size * 1;
+  }
 
-}
-
-@media (min-width: $media-laptop-up) {
-
-}
-
-@media (min-width: $media-laptop-l-up) {
-
+  @media (min-width: $media-laptop-xl-up) {
+    font-size: $base-font-size * 1.15;
+  }
 }
 
 body {

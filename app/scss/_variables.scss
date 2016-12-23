@@ -1,3 +1,4 @@
+// Colors
 $base-color: #232020;
 $accent-color: #f0d38f;
 
@@ -13,13 +14,19 @@ $link-color: $accent-color;
 
 $base-font-size: 16px;
 
+
+// Media querys
 $media-mobile-up: 480px;
 $media-mobile-down: $media-mobile-up - 1;
+
 $media-tablet-up: 768px;
 $media-tablet-down: $media-tablet-up - 1;
+
 $media-laptop-up: 1024px;
-$media-laptop-down: 1$media-laptop-up - 1;
-$media-laptop-l-up: 1440px;
-$media-laptop-l-down: 1$media-laptop-l-up - 1;
-$media-laptop-xl-up: 1920px;
-$media-laptop-xl-down: 1$media-laptop-xl-up - 1;
+$media-laptop-down: $media-laptop-up - 1;
+
+$media-laptop-l-up: 1280px;
+$media-laptop-l-down: $media-laptop-l-up - 1;
+
+$media-laptop-xl-up: 1440px;
+$media-laptop-xl-down: $media-laptop-xl-up - 1;
