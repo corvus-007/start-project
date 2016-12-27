@@ -11,13 +11,16 @@ app/
    |--mixins.scss
    |--styles.scss
 |--img/
+   |--svg-icons/
+   |--svg-symbols/ (дял объединения в один файл)
 |--js/
    |--plugins/
 |--fonts/
 |--blocks (инклюды)
-  
+
 build/
 other/
+   |--psd
 ```
 
 ## Установка
