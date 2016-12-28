@@ -12,7 +12,7 @@ app/
    |--styles.scss
 |--img/
    |--svg-icons/
-   |--svg-symbols/ (дял объединения в один файл)
+   |--svg-symbols/ (для объединения в один файл symbols.svg)
 |--js/
    |--plugins/
 |--fonts/
