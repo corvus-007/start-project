@@ -9,8 +9,7 @@ $grid-gutter: 10;
 }
 
 [class*="col-"] {
-  // width: 100%;
-  flex: 1 1 auto;
+  flex: 1 1 100%;
   padding-left: $grid-gutter * 1px;
   padding-right: $grid-gutter * 1px;
   box-sizing: border-box;
@@ -25,7 +24,7 @@ $grid-gutter: 10;
 @media (min-width: $media-mobile-up) {
 
   @for $i from 1 through $grid-count {
-    .col-mobile-#{$i} {
+    .col-mobile-up-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -35,7 +34,7 @@ $grid-gutter: 10;
 @media (max-width: $media-mobile-down) {
 
   @for $i from 1 through $grid-count {
-    .col-mobile-#{$i} {
+    .col-mobile-down-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -45,7 +44,7 @@ $grid-gutter: 10;
 @media (min-width: $media-tablet-up) {
 
   @for $i from 1 through $grid-count {
-    .col-tablet-#{$i} {
+    .col-tablet-up-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -55,7 +54,7 @@ $grid-gutter: 10;
 @media (max-width: $media-tablet-down) {
 
   @for $i from 1 through $grid-count {
-    .col-tablet-#{$i} {
+    .col-tablet-down-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -65,7 +64,7 @@ $grid-gutter: 10;
 @media (min-width: $media-laptop-up) {
 
   @for $i from 1 through $grid-count {
-    .col-laptop-#{$i} {
+    .col-laptop-up-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -75,7 +74,7 @@ $grid-gutter: 10;
 @media (max-width: $media-laptop-down) {
 
   @for $i from 1 through $grid-count {
-    .col-laptop-#{$i} {
+    .col-laptop-down-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -85,7 +84,7 @@ $grid-gutter: 10;
 @media (min-width: $media-laptop-l-up) {
   
   @for $i from 1 through $grid-count {
-    .col-laptop-l-#{$i} {
+    .col-laptop-l-up-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
@@ -95,7 +94,7 @@ $grid-gutter: 10;
 @media (max-width: $media-laptop-l-down) {
   
   @for $i from 1 through $grid-count {
-    .col-laptop-l-#{$i} {
+    .col-laptop-l-down-#{$i} {
       flex-basis: percentage($i / $grid-count);
     }
   }
