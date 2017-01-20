@@ -33,7 +33,7 @@
   }
 
   @media (min-width: $media-laptop-xl-up) {
-    
+    max-width: 1280px;
   }
 }
 
@@ -48,7 +48,7 @@
 }
 
 /// Подстраивание изображений (и не только) под заданные пропорции
-@mixin responsiveObject($target-width, $target-height) {
+@mixin fitObject($target-width: 1, $target-height: 1, $fit: cover) {
   display: block;
   position: relative;
   height: 0;
@@ -57,23 +57,20 @@
 
   img {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
+  }
 
-    // Dependens on Modernizer
-    // Context .objectfit
-    .no-objectfit & {
-      height: auto;
-    }
-    // Context .no-objectfit.csstransforms
-    .no-objectfit.csstransforms & {
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
+  @supports (object-fit: $fit) {
+    img {
+      object-fit: $fit;
+      height: 100%;
+      transform: none;
+      top: 0;
+      left: 0;
     }
   }
-  
 }

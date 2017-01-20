@@ -24,7 +24,7 @@ gulp.task('style', function() {
         console.log(err);
       }
     }))
-    .pipe(sass())
+    .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(postcss([
       autoprefixer({
         browsers: [
