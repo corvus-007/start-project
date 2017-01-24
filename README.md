@@ -36,3 +36,7 @@ other/
 `npm build`
 ## Удаление папки build
 `gulp clean`
+
+
+Из папки js/plugins/ объединяются js-файлы и помещаются в js/plugins.js
+Из папки img/svg-symbols/ объединяются svg-файлы и помещаются в img/symbols.svg
