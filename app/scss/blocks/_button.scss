@@ -16,9 +16,8 @@
   }
 }
 
-.button {
+@mixin createButton() {
   @include border-rounded();
-  @include buttonColor($accent-color, $base-color);
   display: inline-block;
   padding: em(13, 20) em(33, 20);
   border: 2px solid transparent;
@@ -39,6 +38,12 @@
     font-size: rem(15);
     padding: em(14, 15) em(25, 15);
   }
+
+}
+
+.button {
+  @include createButton();
+  @include buttonColor($accent-color, $base-color);
 }
 
 .button--dark {
