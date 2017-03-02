@@ -1,0 +1,28 @@
+.custom-ul,
+ul:not([class]) {
+  $dimensions-marker: 10;
+
+  @include clear-list();
+
+  margin: 0;
+  padding: 0;
+  letter-spacing: normal;
+
+  li {
+    margin-bottom: 0.7em;
+    position: relative;
+    padding-left: $dimensions-marker * 1px + 15px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.4em;
+      width: rem($dimensions-marker);
+      height: rem($dimensions-marker);
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 2px solid $accent-color;
+    }
+  }
+}

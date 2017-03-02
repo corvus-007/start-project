@@ -1,0 +1,32 @@
+.custom-ol {
+  @include clear-list();
+  $dimensions: 30px;
+
+  margin: 0;
+  padding: 0;
+  letter-spacing: normal;
+  counter-reset: ol-list;
+
+  li {
+    min-height: $dimensions;
+    margin-bottom: 0.7em;
+    position: relative;
+    padding-left: $dimensions + 10;
+  }
+
+  li::before {
+    counter-increment: ol-list;
+    content: counter(ol-list);
+    position: absolute;
+    left: 0;
+    top: -0.2em;
+    width: $dimensions;
+    height: $dimensions;
+    line-height: $dimensions;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 50%;
+    color: blue;
+    background-color: $accent-color;
+  }
+}

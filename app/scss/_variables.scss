@@ -14,7 +14,13 @@ $link-color: $accent-color;
 
 // Fonts
 $base-font-size: 16px;
+$primary-font: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$secondary-font: inherit;
 
+
+// Grid
+$grid-count: 12;
+$grid-gutter: 10;
 
 // Media querys
 $media-mobile-up: 480px;

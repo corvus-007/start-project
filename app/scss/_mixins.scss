@@ -37,6 +37,20 @@
   }
 }
 
+@mixin createFlexColumn($column: 12) {
+  flex-basis: percentage($column / $grid-count);
+  max-width: percentage($column / $grid-count);
+}
+
+@mixin dotted-link($size: 2px) {
+  border-bottom: $size solid transparent;
+  background-origin: border-box;
+  background-image: linear-gradient(to right, currentColor $size, transparent 0);
+  background-position: 0 100%;
+  background-size: $size * 2 $size;
+  background-repeat: repeat-x;
+}
+
 @mixin clear-list() {
   padding: 0;
   margin: 0;
