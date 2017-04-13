@@ -1,6 +1,6 @@
 html {
   font-size: $base-font-size;
-  
+
   @media (min-width: $media-mobile-up) {
     font-size: $base-font-size * 1;
   }
@@ -23,6 +23,7 @@ html {
 }
 
 body {
+  margin: 0;
   font-family: $primary-font;
   font-size: 100%;
   font-weight: normal;
