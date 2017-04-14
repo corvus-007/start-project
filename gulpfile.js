@@ -28,11 +28,7 @@ gulp.task('style', function() {
     .pipe(postcss([
       autoprefixer({
         browsers: [
-        'last 1 version',
-        'last 2 Chrome versions',
-        'last 2 Firefox versions',
-        'last 2 Opera versions',
-        'last 2 Edge versions',
+        'last 2 version'
       ]
       }),
       mqpacker({
@@ -40,12 +36,12 @@ gulp.task('style', function() {
       })
       ])
     )
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/css/'))
     .pipe(minify())
     .pipe(rename({
       suffix: '-min'
     }))
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/css'))
     .pipe(browserSync.stream());
 });
 
