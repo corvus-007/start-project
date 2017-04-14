@@ -2,23 +2,30 @@
 Структура:
 ```
 app/
-|--scss/
-   |--global/
-   |--blocks/
-   |--vendors/
-   |--variables.scss
-   |--functions.scss
-   |--mixins.scss
-   |--styles.scss
-|--img/
-   |--svg-icons/
-   |--svg-symbols/ (для объединения в один файл symbols.svg)
-|--js/
-   |--plugins/
-|--fonts/
-|--blocks (инклюды)
+  |--scss/
+     |--global/
+     |--blocks/
+     |--vendors/
+     |--variables.scss
+     |--functions.scss
+     |--mixins.scss
+     |--styles.scss
+  |--img/
+     |--svg-icons/
+     |--svg-symbols/ (для объединения в один файл symbols.svg)
+  |--js/
+     |--plugins/
+     |--script.js
+  |--fonts/
+  |--blocks (инклюды)
 
 build/
+  |--css/
+     |--style.css
+  |--fonts/
+  |--img/
+     |--symbols.svg
+  |--js
 other/
    |--psd
 ```
@@ -33,7 +40,7 @@ other/
 ## Запуск проекта
 `npm start`
 ## Сборка проекта
-`npm build`
+`npm run build`
 ## Удаление папки build
 `gulp clean`
 
