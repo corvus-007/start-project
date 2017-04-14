@@ -17,7 +17,6 @@
 }
 
 @mixin createButton() {
-  @include border-rounded();
   display: inline-block;
   padding: em(13, 20) em(33, 20);
   border: 2px solid transparent;

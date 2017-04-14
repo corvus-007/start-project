@@ -9,45 +9,12 @@
   }
 }
 
-@mixin container() {
-  min-width: 320px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media (min-width: $media-mobile-up) {
-
-  }
-
-  @media (min-width: $media-tablet-up) {
-    
-  }
-
-  @media (min-width: $media-laptop-up) {
-    max-width: 980px;
-  }
-
-  @media (min-width: $media-laptop-l-up) {
-    max-width: 1000px;
-  }
-
-  @media (min-width: $media-laptop-xl-up) {
-    max-width: 1280px;
-  }
-}
-
-@mixin createFlexColumn($column: 12) {
-  flex-basis: percentage($column / $grid-count);
-  max-width: percentage($column / $grid-count);
-}
-
 @mixin dotted-link($size: 2px) {
   border-bottom: $size solid transparent;
   background-origin: border-box;
   background-image: linear-gradient(to right, currentColor $size, transparent 0);
   background-position: 0 100%;
-  background-size: $size * 2 $size;
+  background-size: ($size * 2) $size;
   background-repeat: repeat-x;
 }
 
@@ -55,10 +22,6 @@
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-@mixin border-rounded($value: 2px) {
-  border-radius: $value;
 }
 
 /// Подстраивание изображений (и не только) под заданные пропорции

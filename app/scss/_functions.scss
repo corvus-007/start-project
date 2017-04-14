@@ -1,4 +1,4 @@
-$context-default: $base-font-size;
+$context-default: $font-size;
 
 // Em converter
 
@@ -6,11 +6,11 @@ $context-default: $base-font-size;
   @if (unitless($target)) {
     $target: $target * 1px;
   }
-  
+
   @if (unitless($context)) {
     $context: $context * 1px;
   }
-  
+
   @return ($target / $context) * 1em;
 }
 
@@ -21,10 +21,10 @@ $context-default: $base-font-size;
   @if (unitless($target)) {
     $target: $target * 1px;
   }
-  
+
   @if (unitless($context)) {
     $context: $context * 1px;
   }
-  
+
   @return ($target / $context) * 1rem;
 }

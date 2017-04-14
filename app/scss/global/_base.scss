@@ -1,25 +1,5 @@
 html {
-  font-size: $base-font-size;
-
-  @media (min-width: $media-mobile-up) {
-    font-size: $base-font-size * 1;
-  }
-
-  @media (min-width: $media-tablet-up) {
-    font-size: $base-font-size * 1;
-  }
-
-  @media (min-width: $media-laptop-up) {
-    font-size: $base-font-size * 1;
-  }
-
-  @media (min-width: $media-laptop-l-up) {
-    font-size: $base-font-size * 1;
-  }
-
-  @media (min-width: $media-laptop-xl-up) {
-    font-size: $base-font-size * 1.15;
-  }
+  font-size: $font-size;
 }
 
 body {
@@ -33,7 +13,7 @@ body {
 }
 
 .container {
-  @include container();
+  @include make-container();
 }
 
 a {
@@ -48,14 +28,6 @@ a {
   &:hover {
     color: mix(#000, $link-color, 10%);
   }
-}
-
-.dotted-link {
-  border-bottom: 1px solid transparent;
-  background-image: linear-gradient(to right, currentColor 1px, transparent 0);
-  background-position: 0 100%;
-  background-size: 3px 1px;
-  background-repeat: repeat-x;
 }
 
 h1,

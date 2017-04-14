@@ -19,7 +19,6 @@
 }
 
 .form-control {
-  @include border-rounded();
   padding: em(14, 18) em(24, 18);
   width: 100%;
   outline: none;
