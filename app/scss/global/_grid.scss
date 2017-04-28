@@ -103,6 +103,6 @@
 
 @include make-grid-columns();
 
-.flex-row {
+.row {
   @include make-row();
 }
