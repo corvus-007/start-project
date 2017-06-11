@@ -17,6 +17,8 @@ $font-size: 16px;
 $primary-font: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $secondary-font: inherit;
 
+$duration: 0.22s;
+
 
 // Grid
 $grid-columns: 12;
@@ -28,6 +30,7 @@ $sm-width: 568px;
 $md-width: 768px;
 $lg-width: 992px;
 $xl-width: 1200px;
+$retina: "(min-resolution: 144dpi), (min-resolution: 1.5dppx)";
 
 $grid-breakpoints: (
   xs: 0,
