@@ -14,10 +14,14 @@ $link-color: $accent-color;
 
 // Fonts
 $font-size: 16px;
+$font-size--small: 15px;
+$font-size--smaller: 13px;
+$font-size--large: 24px;
 $primary-font: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $secondary-font: inherit;
 
 $duration: 0.22s;
+$border-radius: 2px;
 
 
 // Grid
@@ -37,12 +41,19 @@ $grid-breakpoints: (
   sm: 568px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1280px
 );
 
 $grid-max-widths: (
   sm: none,
   md: 720px,
   lg: 960px,
-  xl: 1140px
+  xl: 1000px
+);
+
+$grid-max-widths--slim: (
+  sm: none,
+  md: none,
+  lg: 780px,
+  xl: 800px
 );

@@ -24,6 +24,20 @@
   list-style: none;
 }
 
+@mixin visuallyhidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /// Подстраивание изображений (и не только) под заданные пропорции
 @mixin fitObject($target-width: 1, $target-height: 1, $fit: cover) {
   display: block;

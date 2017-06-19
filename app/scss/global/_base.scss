@@ -10,9 +10,15 @@ body {
   line-height: normal;
   background-color: #fff;
   color: $base-color;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
+  @include make-container();
+}
+
+.slim-container {
   @include make-container();
 }
 
@@ -71,15 +77,5 @@ img {
 }
 
 .visuallyhidden:not(:focus):not(:active) {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+  @include visuallyhidden();
 }
