@@ -1,0 +1,40 @@
+.section {
+  padding-top: ($grid-gutter-width * 1.8);
+  padding-bottom: ($grid-gutter-width * 1.8);
+}
+
+.section__header {
+  @include make-container();
+
+  margin-bottom: ($grid-gutter-width * 1.5);
+  text-align: center;
+}
+
+.section__title {
+  position: relative;
+  margin: 0;
+  padding-bottom: ($grid-gutter-width / 2);
+  font-weight: 600;
+  font-size: rem($font-size);
+  font-family: $secondary-font;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 40px;
+    margin: auto;
+    border-top: 2px solid $accent-color;
+  }
+}
+
+.section__body {
+
+}
+
+.section__footer {
+  text-align: center;
+  margin-top: $grid-gutter-width;
+}
