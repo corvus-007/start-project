@@ -1,28 +1,26 @@
 .custom-ul,
 ul:not([class]) {
-  $dimensions-marker: 10;
+  $dimensions-marker: 8;
 
-  @include clear-list();
-
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
-  letter-spacing: normal;
+  list-style: none;
 
   li {
-    margin-bottom: 0.7em;
     position: relative;
-    padding-left: $dimensions-marker * 1px + 15px;
+    padding-left: rem(35);
 
     &::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0.4em;
+      left: rem(20);
+      top: 0.5em;
       width: rem($dimensions-marker);
       height: rem($dimensions-marker);
       box-sizing: border-box;
       border-radius: 50%;
-      border: 2px solid $accent-color;
+      background-color: $accent-color;
     }
   }
 }

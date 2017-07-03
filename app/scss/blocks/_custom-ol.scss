@@ -1,32 +1,26 @@
-.custom-ol {
-  @include clear-list();
-  $dimensions: 30px;
-
-  margin: 0;
+.custom-ol,
+ol:not([class]) {
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
-  letter-spacing: normal;
+  list-style: none;
   counter-reset: ol-list;
 
   li {
-    min-height: $dimensions;
-    margin-bottom: 0.7em;
     position: relative;
-    padding-left: $dimensions + 10;
-  }
+    padding-left: rem(35);
 
-  li::before {
-    counter-increment: ol-list;
-    content: counter(ol-list);
-    position: absolute;
-    left: 0;
-    top: -0.2em;
-    width: $dimensions;
-    height: $dimensions;
-    line-height: $dimensions;
-    box-sizing: border-box;
-    text-align: center;
-    border-radius: 50%;
-    color: blue;
-    background-color: $accent-color;
+    &::before {
+      counter-increment: ol-list;
+      content: counter(ol-list, decimal-leading-zero);
+      position: absolute;
+      left: rem(10);
+      // top: 0em;
+      font-family: 'Roboto Mono', monospace;
+      color: $accent-color;
+      text-align: center;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
   }
 }
