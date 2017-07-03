@@ -1,12 +1,16 @@
 // Colors
 $base-color: #232020;
 $accent-color: #18898A;
+$primary-color: #48466D;
+$secondary-color: #3D84A8;
 
 $success-color: #11fd6d;
 $info-color: #b9dfff;
 $warning-color: #edf512;
 $danger-color: #fd0d4d;
 
+$white-color: #ffffff;
+$black-color: #000000;
 $light-color: #e4e4e4;
 $muted-color: #7a7a7a;
 $link-color: $accent-color;
@@ -20,7 +24,7 @@ $font-size--large: 24px;
 $primary-font: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $secondary-font: inherit;
 
-$duration: 0.22s;
+$duration: 0.25s;
 $border-radius: 2px;
 
 
@@ -30,10 +34,14 @@ $grid-gutter-width: 30px;
 
 // Media querys
 $xs-width: 0;
-$sm-width: 568px;
-$md-width: 768px;
-$lg-width: 992px;
-$xl-width: 1200px;
+$sm-width: "(min-width: 568px)";
+$md-width: "(min-width: 768px)";
+$lg-width: "(min-width: 992px)";
+$xl-width: "(min-width: 1280px)";
+$xxl-width: "(min-width: 1500px)";
+$xs-only: "(max-width: 567px)";
+$sm-only: "(max-width: 767px)";
+$md-only: "(max-width: 991px)";
 $retina: "(min-resolution: 144dpi), (min-resolution: 1.5dppx)";
 
 $grid-breakpoints: (
@@ -41,19 +49,30 @@ $grid-breakpoints: (
   sm: 568px,
   md: 768px,
   lg: 992px,
-  xl: 1280px
+  xl: 1280px,
+  xxl: 1500px
 );
 
 $grid-max-widths: (
   sm: none,
   md: 720px,
   lg: 960px,
-  xl: 1000px
+  xl: 1000px,
+  xxl: 1200px
 );
 
 $grid-max-widths--slim: (
   sm: none,
   md: none,
   lg: 780px,
-  xl: 800px
+  xl: 800px,
+  xxl: 980px
+);
+
+$grid-max-widths--fat: (
+  sm: none,
+  md: none,
+  lg: 1040px,
+  xl: 1180px,
+  xxl: 1300px
 );
