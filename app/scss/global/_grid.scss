@@ -67,6 +67,20 @@
   }
 }
 
+@mixin make-fat-container($gutter: $grid-gutter-width) {
+  min-width: (320px - $gutter);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ($gutter / 2);
+  padding-right: ($gutter / 2);
+
+  @each $breakpoint, $container-max-width in $grid-max-widths--fat {
+    @include media-breakpoint-up($breakpoint) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
 @mixin make-container-fluid($gutter: $grid-gutter-width) {
   // width: 100%;
   padding-left: ($gutter / 2);
