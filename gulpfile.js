@@ -1,11 +1,12 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var plumber =require('gulp-plumber');
+var plumber = require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
 var mqpacker = require('css-mqpacker');
 var minify = require('gulp-csso');
+var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
 var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
@@ -17,35 +18,34 @@ var run = require('run-sequence');
 var del = require('del');
 
 
-gulp.task('style', function() {
+gulp.task('style', function () {
   return gulp.src('app/scss/style.scss')
+    .pipe(sourcemaps.init())
     .pipe(plumber({
-      errorHandler: function(err) {
+      errorHandler: function (err) {
         console.log(err);
       }
     }))
-    .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
+    .pipe(sass.sync({
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
     .pipe(postcss([
       autoprefixer({
         browsers: [
-        'last 2 version'
-      ]
+          'last 2 version'
+        ]
       }),
       mqpacker({
         sort: true
       })
-      ])
-    )
-    .pipe(gulp.dest('build/css/'))
+    ]))
     .pipe(minify())
-    .pipe(rename({
-      suffix: '-min'
-    }))
-    .pipe(gulp.dest('build/css'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('build/'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('plugins-js', function() {
+gulp.task('plugins-js', function () {
   gulp.src('app/js/plugins/*.js')
     .pipe(concat('plugins.js'))
     .pipe(uglify())
@@ -53,47 +53,49 @@ gulp.task('plugins-js', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('copy-script', function() {
+gulp.task('copy-script', function () {
   gulp.src(['app/js/*.{js,json}', '!app/js/plugins/**'])
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('fileinclude', function() {
+gulp.task('fileinclude', function () {
   gulp.src('app/*.html')
-    .pipe(fileinclude())
+    .pipe(fileinclude({
+      indent: true
+    }))
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('images', function() {
-  return gulp.src('build/img/**/*.{png,jpg,gif}')
-    .pipe(imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true})
-    ]))
-    .pipe(gulp.dest('build/img'));
+gulp.task('images', function () {
+  return gulp.src('build/images/**/*.{png,jpg,gif}')
+    // .pipe(imagemin([
+    //   imagemin.optipng({optimizationLevel: 3}),
+    //   imagemin.jpegtran({progressive: true})
+    // ]))
+    .pipe(gulp.dest('build/images'));
 });
 
 
-gulp.task('symbols', function() {
-  return gulp.src('build/img/svg-symbols/*.svg')
+gulp.task('symbols', function () {
+  return gulp.src('build/images/svg-symbols/*.svg')
     .pipe(svgmin())
     .pipe(svgstore({
       inlineSvg: true
     }))
     .pipe(rename('symbols.svg'))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('build/images'));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return del('build');
 });
 
-gulp.task('copy', function() {
+gulp.task('copy', function () {
   return gulp.src([
       'app/fonts/**/*.{woff,woff2}',
-      'app/img/**',
-//      'app/js/**',
+      'app/images/**',
+      //      'app/js/**',
       'app/*.html'
     ], {
       base: 'app',
@@ -102,7 +104,7 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build', function(fn) {
+gulp.task('build', function (fn) {
   run(
     'clean',
     'copy',
@@ -115,13 +117,13 @@ gulp.task('build', function(fn) {
     fn);
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', function () {
   browserSync.init({
     server: "./build"
   });
 
-  gulp.watch('app/scss/**/*.scss', function() {
-    setTimeout(function() {
+  gulp.watch('app/scss/**/*.scss', function () {
+    setTimeout(function () {
       gulp.start('style');
     }, 500);
   });
