@@ -1,50 +1,73 @@
-@mixin buttonColor($bgColor: $buttonColorDefault, $textColor: #fff) {
-
-  color: $textColor;
-  background-color: $bgColor;
-
-  &:hover,
-  &:focus {
-    color: $textColor;
-    background-color: mix(#fff, $bgColor, 7%);
-    outline: none;
-  }
-
-  &:active {
-    color: $textColor;
-    background-color: mix(#000, $bgColor, 7%);
-  }
-}
-
-@mixin createButton() {
-  display: inline-block;
-  padding: em(13, 20) em(33, 20);
-  border: 2px solid transparent;
+@mixin make-button() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 260px;
+  padding: rem(12) rem(35);
   text-align: center;
   font-family: inherit;
-  font-size: rem(20);
-  font-weight: 700;
+  font-size: rem($font-size);
+  font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   line-height: normal;
   outline: none;
   user-select: none;
+  background-color: transparent;
+  border: 3px solid transparent;
+  border-radius: 60px;
   box-sizing: border-box;
-  transition: background-color 0.2s, color 0.2s;
+  transition: $duration;
   cursor: pointer;
+}
 
-  &--small {
-    font-size: rem(15);
-    padding: em(14, 15) em(25, 15);
+@mixin mod-button-small() {
+  padding: rem(8) rem(28);
+  font-size: rem($font-size--small);
+}
+
+@mixin mod-button-large() {
+  padding: rem(18) rem(40);
+  font-size: rem($font-size--large);
+}
+
+@mixin make-button-color-default() {
+  color: #2e292f;
+  background-color: $secondary-color;
+
+  &:hover,
+  &:focus {
+    color: #2e292f;
+    background-color: mix($white-color, $secondary-color, 15%);
   }
 
+  &:active {
+    background-color: mix($base-color, $secondary-color, 15%);
+  }
 }
+
 
 .button {
-  @include createButton();
-  @include buttonColor($accent-color, $base-color);
+  @include make-button();
+  @include make-button-color-default();
+
+  &--small {
+    @include mod-button-small();
+  }
+
+  &--large {
+    @include mod-button-large();
+  }
 }
 
-.button--dark {
-  @include buttonColor(#2c2929);
+.button__icon {
+  fill: currentColor;
+
+  &:first-child {
+    margin-right: 0.5em;
+  }
+
+  &:last-child {
+    margin-left: 0.5em;
+  }
 }
