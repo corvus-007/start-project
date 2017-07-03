@@ -18,8 +18,16 @@ body {
   @include make-container();
 }
 
-.slim-container {
-  @include make-container();
+.container-slim {
+  @include make-slim-container();
+}
+
+.container-fat {
+  @include make-fat-container();
+}
+
+.container-fluid {
+  @include make-container-fluid();
 }
 
 a {
