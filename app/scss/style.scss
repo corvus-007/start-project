@@ -1,8 +1,8 @@
-@import "normalize";
-
 @import "variables";
 @import "functions";
 @import "mixins";
+
+@import "normalize";
 
 // Global
 @import "global/fonts";
@@ -14,13 +14,13 @@
 @import "vendors/slick";
 @import "vendors/jquery.fancybox.min";
 
-
 // Blocks
 @import "blocks/icon";
 @import "blocks/button";
 @import "blocks/form";
 @import "blocks/table";
 @import "blocks/popup";
+@import "blocks/section";
 @import "blocks/custom-ol";
 @import "blocks/custom-ul";
 @import "blocks/site-header";
