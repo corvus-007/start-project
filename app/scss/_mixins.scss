@@ -24,27 +24,55 @@
   list-style: none;
 }
 
+@mixin make-limit-container($gutter: $grid-gutter-width) {
+  min-width: 320px;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ($gutter / 2);
+  padding-right: ($gutter / 2);
+  box-sizing: border-box;
+
+  @include media-breakpoint-up(lg) {
+    padding-left: ($gutter * 1);
+    padding-right: ($gutter * 1);
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-left: ($gutter * 2);
+    padding-right: ($gutter * 2);
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 1600px;
+  }
+}
+
 @mixin visuallyhidden {
   position: absolute;
-
   width: 1px;
   height: 1px;
   margin: -1px;
   border: 0;
   padding: 0;
-
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
 
 /// Подстраивание изображений (и не только) под заданные пропорции
-@mixin fitObject($target-width: 1, $target-height: 1, $fit: cover) {
-  display: block;
+@mixin make-fit-object($target-width: 1, $target-height: 1, $fit: cover) {
   position: relative;
-  height: 0;
+  display: block;
   overflow: hidden;
-  padding-top: percentage($target-height / $target-width);
+
+  &::before {
+    content: "";
+    width: 100%;
+    display: block;
+    height: 0;
+    padding-top: percentage($target-height / $target-width);
+  }
 
   img {
     position: absolute;
