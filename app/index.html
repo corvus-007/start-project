@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="site-wrapper">
     @@include('blocks/site-header.html')
     <main class="site-main">
       <div class="container">
+        <code>.container</code>
         <style scoped>
           .container {
             border: 4px solid #18898A;
@@ -24,40 +25,33 @@
           }
         </style>
         <div class="row">
-          <div class="col-12"><code><pre>.col-12</pre></code></div>
           <div class="col-6"><code><pre>.col-6</pre></code></div>
           <div class="col-6"><code><pre>.col-6</pre></code></div>
-          <div class="col-4"><code><pre>.col-4</pre></code></div>
-          <div class="col-4"><code><pre>.col-4</pre></code></div>
-          <div class="col-4"><code><pre>.col-4</pre></code></div>
-          <div class="col-3"><code><pre>.col-3</pre></code></div>
-          <div class="col-3"><code><pre>.col-3</pre></code></div>
-          <div class="col-3"><code><pre>.col-3</pre></code></div>
-          <div class="col-3"><code><pre>.col-3</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-2"><code><pre>.col-2</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
-          <div class="col-1"><code><pre>.col-1</pre></code></div>
+          <div class="col-md-7"><code><pre>.col-md-7</pre></code></div>
+          <div class="col-md-5"><code><pre>.col-md-5</pre></code></div>
+        </div>
+      </div>
+      <div class="container-slim">
+        <code>.container-slim</code>
+        <div class="row">
+          <div class="col-6"><code><pre>.col-6</pre></code></div>
+          <div class="col-6"><code><pre>.col-6</pre></code></div>
+          <div class="col-md-7"><code><pre>.col-md-7</pre></code></div>
+          <div class="col-md-5"><code><pre>.col-md-5</pre></code></div>
+        </div>
+      </div>
+      <div class="container-fat">
+        <code>.container-fat</code>
+        <div class="row">
+          <div class="col-6"><code><pre>.col-6</pre></code></div>
+          <div class="col-6"><code><pre>.col-6</pre></code></div>
           <div class="col-md-7"><code><pre>.col-md-7</pre></code></div>
           <div class="col-md-5"><code><pre>.col-md-5</pre></code></div>
         </div>
       </div>
     </main>
     @@include('blocks/site-footer.html')
+    @@include('blocks/site-scripts.html')
   </div>
 </body>
 </html>
