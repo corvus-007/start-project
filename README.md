@@ -5,25 +5,25 @@ app/
   |--scss/
      |--global/
      |--blocks/
-     |--vendors/
+     |--vendors/ (Стили сторонних библиотек)
      |--variables.scss
      |--functions.scss
      |--mixins.scss
      |--styles.scss
-  |--img/
+  |--images/
      |--svg-icons/
      |--svg-symbols/ (для объединения в один файл symbols.svg)
   |--js/
      |--plugins/
+     |--jQuery (Подключать отдельно)
      |--script.js
   |--fonts/
   |--blocks (инклюды)
 
 build/
-  |--css/
-     |--style.css
+  |--style.css
   |--fonts/
-  |--img/
+  |--images/
      |--symbols.svg
   |--js
 other/
@@ -46,4 +46,4 @@ other/
 
 
 Из папки js/plugins/ объединяются js-файлы и помещаются в js/plugins.js
-Из папки img/svg-symbols/ объединяются svg-файлы и помещаются в img/symbols.svg
+Из папки images/svg-symbols/ объединяются svg-файлы и помещаются в images/symbols.svg
