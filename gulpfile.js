@@ -6,10 +6,8 @@ var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
 var mqpacker = require('css-mqpacker');
 var minify = require('gulp-csso');
-var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
 var rename = require('gulp-rename');
-var imagemin = require('gulp-imagemin');
 var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
 var uglify = require('gulp-uglify');
@@ -20,7 +18,6 @@ var del = require('del');
 
 gulp.task('style', function () {
   return gulp.src('app/scss/style.scss')
-    .pipe(sourcemaps.init())
     .pipe(plumber({
       errorHandler: function (err) {
         console.log(err);
@@ -39,8 +36,7 @@ gulp.task('style', function () {
         sort: true
       })
     ]))
-    .pipe(minify())
-    .pipe(sourcemaps.write('.'))
+    // .pipe(minify())
     .pipe(gulp.dest('build/'))
     .pipe(browserSync.stream());
 });
@@ -67,12 +63,8 @@ gulp.task('fileinclude', function () {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('images', function () {
-  return gulp.src('build/images/**/*.{png,jpg,gif}')
-    // .pipe(imagemin([
-    //   imagemin.optipng({optimizationLevel: 3}),
-    //   imagemin.jpegtran({progressive: true})
-    // ]))
+gulp.task('copy-images', function () {
+  return gulp.src('app/images/**/*')
     .pipe(gulp.dest('build/images'));
 });
 
@@ -94,7 +86,7 @@ gulp.task('clean', function () {
 gulp.task('copy', function () {
   return gulp.src([
       'app/fonts/**/*.{woff,woff2}',
-      'app/images/**',
+      // 'app/images/**',
       //      'app/js/**',
       'app/*.html'
     ], {
@@ -112,7 +104,7 @@ gulp.task('build', function (fn) {
     'plugins-js',
     'copy-script',
     'fileinclude',
-    'images',
+    'copy-images',
     'symbols',
     fn);
 });
@@ -127,7 +119,9 @@ gulp.task('serve', function () {
       gulp.start('style');
     }, 500);
   });
+  gulp.watch('app/images/**/*', ['copy-images']);
+  gulp.watch('build/images/svg-symbols/*.svg', ['copy-images', 'symbols']);
   gulp.watch('app/js/plugins/*.js', ['plugins-js']);
-  gulp.watch('app/js/script.js', ['copy-script']);
+  gulp.watch(['app/js/*.{js,json}', '!app/js/plugins/**'], ['copy-script']);
   gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', browserSync.reload);
 });
