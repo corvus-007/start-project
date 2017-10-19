@@ -48,6 +48,99 @@
   }
 }
 
+@mixin mq-min($breakpoint-min) {
+  @media (min-width: $breakpoint-min) {
+    @content;
+  }
+}
+
+@mixin mq-max($breakpoint-max) {
+  @media (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+@mixin mq-range($breakpoint-min, $breakpoint-max) {
+  @media (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+@mixin make-textual() {
+  line-height: 1.6;
+  letter-spacing: 0;
+
+  & > * + *:not(li) {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  & > * + h2 {
+    margin-top: 2.25rem;
+  }
+
+  & > * + h3 {
+    margin-top: 2rem;
+  }
+
+  & > h2 + * {
+    margin-top: 0.75rem;
+  }
+
+  & > h3 + * {
+    margin-top: 0.75rem;
+  }
+
+  & > h4 + * {
+    margin-top: 0.8rem;
+  }
+
+  & > h2 + h3 {
+    margin-top: 0.9rem;
+  }
+
+  & > h2 {
+    margin-bottom: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: rem(18);
+    letter-spacing: 0.05em;
+  }
+
+  & > h3 {
+    margin-bottom: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: rem(16);
+    letter-spacing: 0.05em;
+  }
+
+  & > h4 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: rem(15);
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include mq-min(768px) {
+    .alignleft {
+      float: left;
+      margin-right: $grid-gutter-width;
+    }
+
+    .alignright {
+      float: right;
+      margin-left: $grid-gutter-width;
+    }
+  }
+}
+
+
 @mixin visuallyhidden {
   position: absolute;
   width: 1px;
