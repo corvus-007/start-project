@@ -120,7 +120,7 @@ gulp.task('serve', function () {
     }, 500);
   });
   gulp.watch('app/images/**/*', ['copy-images']);
-  gulp.watch('build/images/svg-symbols/*.svg', ['copy-images', 'symbols']);
+  gulp.watch('build/images/svg-symbols/*.svg', ['symbols']);
   gulp.watch('app/js/plugins/*.js', ['plugins-js']);
   gulp.watch(['app/js/*.{js,json}', '!app/js/plugins/**'], ['copy-script']);
   gulp.watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude']).on('change', browserSync.reload);
