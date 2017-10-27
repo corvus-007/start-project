@@ -66,6 +66,7 @@
   }
 }
 
+Создает отформатированный WYSIWYG котент
 @mixin make-textual() {
   line-height: 1.6;
   letter-spacing: 0;
@@ -139,7 +140,6 @@
     }
   }
 }
-
 
 @mixin visuallyhidden {
   position: absolute;
