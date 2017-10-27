@@ -1,7 +1,7 @@
 {
   "name": "start-project",
   "devDependencies": {
-    "autoprefixer": "^7.1.5",
+    "autoprefixer": "^7.1.6",
     "browser-sync": "^2.18.13",
     "css-mqpacker": "^6.0.1",
     "del": "^3.0.0",
