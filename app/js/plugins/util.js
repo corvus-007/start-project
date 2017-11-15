@@ -10,10 +10,8 @@ window.util = (function () {
         return;
       }
 
-      // Array.from(elements).forEach(function findMaxHeight(it) {
-      //   maxHeight = (maxHeight > it.clientHeight) ? maxHeight : it.clientHeight;
-      // });
-      maxHeight = Array.from(elements).reduce(function findMaxHeight(prevValue, currentValue) {
+      maxHeight = Array.from(elements).reduce(function findMaxHeight(prevValue, element) {
+        var currentValue = element.offsetHeight;
         return (prevValue > currentValue) ? prevValue : currentValue;
       }, 0);
 
