@@ -2,72 +2,139 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  padding: rem(12) rem(35);
+  min-width: rem(212px);
+  padding: rem(11) rem(15);
   text-align: center;
-  font-family: inherit;
-  font-size: rem($font-size);
-  font-weight: 600;
+  font-weight: 800;
+  font-size: rem(13);
+  font-family: $secondary-font;
   text-decoration: none;
   text-transform: uppercase;
   line-height: normal;
   outline: none;
   user-select: none;
   background-color: transparent;
-  border: 3px solid transparent;
-  border-radius: 60px;
+  border: 1px solid;
+  letter-spacing: 0.1rem;
   box-sizing: border-box;
-  transition: $duration;
+  transition-property: background, color, border-color;
+  transition-duration: ($duration * 2);
   cursor: pointer;
 }
 
-@mixin mod-button-small() {
-  padding: rem(8) rem(28);
-  font-size: rem($font-size--small);
+@mixin --button-small() {
+  padding-top: rem(8);
+  padding-bottom: rem(8);
+  font-size: rem(14);
 }
 
-@mixin mod-button-large() {
+@mixin --button-large() {
   padding: rem(18) rem(40);
   font-size: rem($font-size--large);
 }
 
-@mixin make-button-color-default() {
-  color: #2e292f;
-  background-color: $secondary-color;
+@mixin --button-black() {
+  color: $black-color;
 
   &:hover,
   &:focus {
-    color: #2e292f;
-    background-color: mix($white-color, $secondary-color, 15%);
+    color: $white-color;
+    border-color: transparent;
+    background-color: $black-color;
   }
 
   &:active {
-    background-color: mix($base-color, $secondary-color, 15%);
+    background-color: $black-color;
   }
 }
 
+@mixin --button-white() {
+  color: $white-color;
+
+  &:hover,
+  &:focus {
+    color: $black-color;
+    border-color: transparent;
+    background-color: $white-color;
+  }
+
+  &:active {
+    background-color: $white-color;
+  }
+}
+
+@mixin --button-action() {
+  color: $accent-color;
+
+  &:hover,
+  &:focus {
+    color: $white-color;
+    border-color: transparent;
+    background-color: $accent-color;
+  }
+
+  &:active {
+    background-color: $accent-color;
+  }
+}
+
+@mixin --button-submit() {
+  color: $success-color;
+
+  &:hover,
+  &:focus {
+    color: $white-color;
+    border-color: transparent;
+    background-color: $success-color;
+  }
+
+  &:active {
+    background-color: $success-color;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    flex-grow: 1;
+    background-color: currentColor;
+  }
+
+  &::before {
+    margin-right: rem(10);
+  }
+
+  &::after {
+    margin-left: rem(10);
+  }
+}
 
 .button {
   @include make-button();
-  @include make-button-color-default();
+  @include --button-black();
 
-  &--small {
-    @include mod-button-small();
-  }
+  // &--small {
+  //   @include --button-small();
+  // }
 
-  &--large {
-    @include mod-button-large();
-  }
+  // &--large {
+  //   @include --button-large();
+  // }
 }
 
-.button__icon {
-  fill: currentColor;
+// .button__icon {
+//   fill: currentColor;
 
-  &:first-child {
-    margin-right: 0.5em;
-  }
+//   &:first-child {
+//     margin-right: 0.5em;
+//   }
 
-  &:last-child {
-    margin-left: 0.5em;
-  }
-}
+//   &:last-child {
+//     margin-left: 0.5em;
+//   }
+// }
