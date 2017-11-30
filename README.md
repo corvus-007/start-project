@@ -15,6 +15,7 @@ app/
      |--svg-symbols/ (для объединения в один файл symbols.svg)
   |--js/
      |--plugins/
+     |--modules/
      |--jQuery (Подключать отдельно)
      |--script.js
   |--fonts/
@@ -46,4 +47,5 @@ other/
 
 
 Из папки js/plugins/ объединяются js-файлы и помещаются в js/plugins.js
+Из папки js/modules/ объединяются js-файлы и помещаются в js/modules.js
 Из папки images/svg-symbols/ объединяются svg-файлы и помещаются в images/symbols.svg
