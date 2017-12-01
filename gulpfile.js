@@ -100,7 +100,7 @@ gulp.task('make-symbols', function() {
 });
 
 gulp.task('copy-fonts', function() {
-  return gulp.src('app/fonts/**/*.{woff,woff2}').pipe(gulp.dest('build'));
+  return gulp.src('app/fonts/**/*.{woff,woff2}').pipe(gulp.dest('build/fonts'));
 });
 
 gulp.task('copy-root-htmls', function() {
