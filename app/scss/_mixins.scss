@@ -9,6 +9,16 @@
   }
 }
 
+@mixin clear-mr-edges-elem() {
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
 @mixin dotted-link($size: 2px) {
   border-bottom: $size solid transparent;
   background-origin: border-box;
