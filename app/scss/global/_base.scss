@@ -18,26 +18,9 @@ body {
   @include make-container();
 }
 
-.container-slim {
-  @include make-slim-container();
-}
-
-.container-fat {
-  @include make-fat-container();
-}
-
-.container-fluid {
-  @include make-container-fluid();
-}
-
 a {
   color: $link-color;
-  text-decoration: none;
   outline: none;
-
-  &:not([class]) {
-    border-bottom: 1px solid;
-  }
 
   &:hover {
     color: mix(#000, $link-color, 10%);

@@ -24,30 +24,6 @@
   list-style: none;
 }
 
-@mixin make-limit-container($gutter: $grid-gutter-width) {
-  min-width: 320px;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: ($gutter / 2);
-  padding-right: ($gutter / 2);
-  box-sizing: border-box;
-
-  @include media-breakpoint-up(lg) {
-    padding-left: ($gutter * 1);
-    padding-right: ($gutter * 1);
-  }
-
-  @include media-breakpoint-up(xl) {
-    padding-left: ($gutter * 2);
-    padding-right: ($gutter * 2);
-  }
-
-  @include media-breakpoint-up(xl) {
-    max-width: 1600px;
-  }
-}
-
 @mixin mq-min($breakpoint-min) {
   @media (min-width: $breakpoint-min) {
     @content;

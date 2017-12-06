@@ -1,0 +1,18 @@
+@mixin make-container($gutter: $grid-gutter-width) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ($gutter / 2);
+  padding-right: ($gutter / 2);
+  box-sizing: border-box;
+
+  @include mq-min(736px) {
+    padding-left: ($gutter / 1);
+    padding-right: ($gutter / 1);
+  }
+
+  @include mq-min(1280px) {
+    max-width: 1180px;
+  }
+}
+

@@ -3,7 +3,7 @@
   max-width: 500px;
   padding: ($grid-gutter-width * 2);
 
-  @include media-breakpoint-up(md) {
+  @include mq-min(768px) {
     padding: ($grid-gutter-width * 3);
   }
 }
