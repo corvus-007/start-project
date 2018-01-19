@@ -6,6 +6,7 @@ var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
 var mqpacker = require('css-mqpacker');
 var minify = require('gulp-csso');
+var include = require('gulp-include');
 var fileinclude = require('gulp-file-include');
 var rename = require('gulp-rename');
 var svgstore = require('gulp-svgstore');
@@ -49,8 +50,8 @@ gulp.task('style', function() {
 
 gulp.task('plugins-js', function() {
   gulp
-    .src('app/js/plugins/*.js')
-    .pipe(concat('plugins.js'))
+    .src('app/js/plugins.js')
+    .pipe(include())
     .pipe(uglify())
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
@@ -58,15 +59,21 @@ gulp.task('plugins-js', function() {
 
 gulp.task('modules-js', function() {
   gulp
-    .src(['app/js/modules/util.js'])
-    .pipe(concat('modules.js'))
+    .src(['app/js/modules.js'])
+    .pipe(include())
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('copy-script', function() {
   gulp
-    .src(['app/js/*.{js,json}', '!app/js/plugins/**'])
+    .src([
+      'app/js/*.{js,json}',
+      '!app/js/plugins/**',
+      '!app/js/modules/**',
+      '!app/js/modules.js',
+      '!app/js/plugins.js'
+    ])
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
 });
