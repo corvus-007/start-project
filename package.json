@@ -2,8 +2,8 @@
   "name": "start-project",
   "devDependencies": {
     "autoprefixer": "^7.2.5",
-    "browser-sync": "^2.23.5",
-    "css-mqpacker": "^6.0.1",
+    "browser-sync": "^2.23.6",
+    "css-mqpacker": "^6.0.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
