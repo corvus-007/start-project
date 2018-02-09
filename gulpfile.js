@@ -148,8 +148,8 @@ gulp.task('serve', function() {
   gulp.watch('app/images/**/*', ['copy-images']);
   gulp.watch('app/js/*.{js,json}', ['copy-script']);
   gulp.watch('build/images/svg-symbols/*.svg', ['make-symbols']);
-  gulp.watch('app/js/plugins/*.js', ['plugins-js']);
-  gulp.watch('app/js/modules/*.js', ['modules-js']);
+  gulp.watch(['app/js/plugins.js', 'app/js/plugins/*.js'], ['plugins-js']);
+  gulp.watch(['app/js/modules.js', 'app/js/modules/*.js'], ['modules-js']);
   gulp
     .watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude'])
     .on('change', browserSync.reload);
