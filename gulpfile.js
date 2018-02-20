@@ -154,3 +154,7 @@ gulp.task('serve', function() {
     .watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude'])
     .on('change', browserSync.reload);
 });
+
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*').pipe(ghPages());
+});
