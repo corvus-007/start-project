@@ -15,6 +15,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var run = require('run-sequence');
 var del = require('del');
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('style', function() {
   return (gulp
