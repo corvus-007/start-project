@@ -1,10 +1,10 @@
 .popup {
-  width: calc(100% - #{($grid-gutter-width / 2)});
+  width: calc(100% - #{($gutter / 2)});
   max-width: 500px;
-  padding: ($grid-gutter-width * 2);
+  padding: ($gutter * 2);
 
   @include mq-min(768px) {
-    padding: ($grid-gutter-width * 3);
+    padding: ($gutter * 3);
   }
 }
 

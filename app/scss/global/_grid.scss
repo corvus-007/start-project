@@ -39,7 +39,7 @@
   }
 }
 
-@mixin make-container($gutter: $grid-gutter-width) {
+@mixin make-container($gutter: $gutter) {
   min-width: (320px - $gutter);
   margin-left: auto;
   margin-right: auto;
@@ -53,7 +53,7 @@
   }
 }
 
-@mixin make-slim-container($gutter: $grid-gutter-width) {
+@mixin make-slim-container($gutter: $gutter) {
   min-width: (320px - $gutter);
   margin-left: auto;
   margin-right: auto;
@@ -67,7 +67,7 @@
   }
 }
 
-@mixin make-fat-container($gutter: $grid-gutter-width) {
+@mixin make-fat-container($gutter: $gutter) {
   min-width: (320px - $gutter);
   margin-left: auto;
   margin-right: auto;
@@ -81,20 +81,20 @@
   }
 }
 
-@mixin make-container-fluid($gutter: $grid-gutter-width) {
+@mixin make-container-fluid($gutter: $gutter) {
   // width: 100%;
   padding-left: ($gutter / 2);
   padding-right: ($gutter / 2);
 }
 
-@mixin make-row($gutter: $grid-gutter-width) {
+@mixin make-row($gutter: $gutter) {
   display: flex;
   flex-wrap: wrap;
   margin-left: ($gutter / -2);
   margin-right: ($gutter / -2);
 }
 
-@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+@mixin make-col($size, $columns: $grid-columns, $gutter: $gutter) {
   width: percentage($size / $columns);
   padding-left: ($gutter / 2);
   padding-right: ($gutter / 2);
@@ -105,7 +105,7 @@
 //   margin-left: percentage($size / $columns);
 // }
 
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $gutter, $breakpoints: $grid-breakpoints) {
 
   %grid-column {
     position: relative;

@@ -4,7 +4,6 @@ var plumber = require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
-var mqpacker = require('css-mqpacker');
 var minify = require('gulp-csso');
 var include = require('gulp-include');
 var fileinclude = require('gulp-file-include');
@@ -17,39 +16,36 @@ var run = require('run-sequence');
 var del = require('del');
 var ghPages = require('gulp-gh-pages');
 
-gulp.task('style', function() {
+gulp.task('style', function () {
   return (gulp
-      .src('app/scss/style.scss')
-      .pipe(
-        plumber({
-          errorHandler: function(err) {
-            console.log(err);
-          }
+    .src('app/scss/style.scss')
+    .pipe(
+      plumber({
+        errorHandler: function (err) {
+          console.log(err);
+        }
+      })
+    )
+    .pipe(
+      sass
+      .sync({
+        outputStyle: 'expanded'
+      })
+      .on('error', sass.logError)
+    )
+    .pipe(
+      postcss([
+        autoprefixer({
+          browsers: ['last 2 version']
         })
-      )
-      .pipe(
-        sass
-          .sync({
-            outputStyle: 'expanded'
-          })
-          .on('error', sass.logError)
-      )
-      .pipe(
-        postcss([
-          autoprefixer({
-            browsers: ['last 2 version']
-          }),
-          mqpacker({
-            sort: true
-          })
-        ])
-      )
-      // .pipe(minify())
-      .pipe(gulp.dest('build/'))
-      .pipe(browserSync.stream()) );
+      ])
+    )
+    // .pipe(minify())
+    .pipe(gulp.dest('build/'))
+    .pipe(browserSync.stream()));
 });
 
-gulp.task('plugins-js', function() {
+gulp.task('plugins-js', function () {
   gulp
     .src('app/js/plugins.js')
     .pipe(include())
@@ -58,7 +54,7 @@ gulp.task('plugins-js', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('modules-js', function() {
+gulp.task('modules-js', function () {
   gulp
     .src(['app/js/modules.js'])
     .pipe(include())
@@ -66,7 +62,7 @@ gulp.task('modules-js', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('copy-script', function() {
+gulp.task('copy-script', function () {
   gulp
     .src([
       'app/js/*.{js,json}',
@@ -79,7 +75,7 @@ gulp.task('copy-script', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('fileinclude', function() {
+gulp.task('fileinclude', function () {
   gulp
     .src('app/*.html')
     .pipe(
@@ -90,11 +86,11 @@ gulp.task('fileinclude', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('copy-images', function() {
+gulp.task('copy-images', function () {
   return gulp.src('app/images/**/*').pipe(gulp.dest('build/images'));
 });
 
-gulp.task('make-symbols', function() {
+gulp.task('make-symbols', function () {
   return gulp
     .src('build/images/svg-symbols/*.svg')
     .pipe(svgmin())
@@ -107,19 +103,19 @@ gulp.task('make-symbols', function() {
     .pipe(gulp.dest('build/images'));
 });
 
-gulp.task('copy-fonts', function() {
+gulp.task('copy-fonts', function () {
   return gulp.src('app/fonts/**/*.{woff,woff2}').pipe(gulp.dest('build/fonts'));
 });
 
-gulp.task('copy-root-htmls', function() {
+gulp.task('copy-root-htmls', function () {
   return gulp.src('app/*.html').pipe(gulp.dest('build'));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return del('build');
 });
 
-gulp.task('build', function(fn) {
+gulp.task('build', function (fn) {
   run(
     'clean',
     'copy-root-htmls',
@@ -135,13 +131,13 @@ gulp.task('build', function(fn) {
   );
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', function () {
   browserSync.init({
     server: './build'
   });
 
-  gulp.watch('app/scss/**/*.scss', function() {
-    setTimeout(function() {
+  gulp.watch('app/scss/**/*.scss', function () {
+    setTimeout(function () {
       gulp.start('style');
     }, 500);
   });
@@ -156,6 +152,6 @@ gulp.task('serve', function() {
     .on('change', browserSync.reload);
 });
 
-gulp.task('deploy', function() {
+gulp.task('deploy', function () {
   return gulp.src('./build/**/*').pipe(ghPages());
 });
