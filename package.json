@@ -24,5 +24,9 @@
     "build": "gulp build",
     "start": "npm run build && gulp serve",
     "deploy": "npm run build && gulp deploy"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.3.5",
+    "svg4everybody": "^2.1.9"
   }
 }

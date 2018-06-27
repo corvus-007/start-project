@@ -12,15 +12,14 @@
 @import "global/layout";
 
 // Vendors
-@import "vendors/slick";
-@import "vendors/jquery.fancybox.min";
+@import "../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox";
 
 // Blocks
 @import "blocks/button";
 @import "blocks/form";
 @import "blocks/table";
 @import "blocks/popup";
-@import "blocks/section";
+@import "blocks/common-section";
 @import "blocks/custom-ol";
 @import "blocks/custom-ul";
 @import "blocks/main-header";

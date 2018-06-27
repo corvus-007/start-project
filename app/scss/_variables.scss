@@ -18,9 +18,6 @@ $link-color: $accent-color;
 
 // Fonts
 $font-size: 16px;
-$font-size--small: 15px;
-$font-size--smaller: 13px;
-$font-size--large: 24px;
 $primary-font: "Akrobat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $secondary-font: inherit;
 
@@ -30,49 +27,4 @@ $border-radius: 2px;
 
 // Grid
 $grid-columns: 12;
-$grid-gutter-width: 30px;
-
-// Media querys
-$xs-width: 0;
-$sm-width: "(min-width: 568px)";
-$md-width: "(min-width: 768px)";
-$lg-width: "(min-width: 992px)";
-$xl-width: "(min-width: 1280px)";
-$xxl-width: "(min-width: 1500px)";
-$xs-only: "(max-width: 567px)";
-$sm-only: "(max-width: 767px)";
-$md-only: "(max-width: 991px)";
-$retina: "(min-resolution: 144dpi), (min-resolution: 1.5dppx)";
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 568px,
-  md: 768px,
-  lg: 992px,
-  xl: 1280px,
-  xxl: 1500px
-);
-
-$grid-max-widths: (
-  sm: none,
-  md: 720px,
-  lg: 960px,
-  xl: 1000px,
-  xxl: 1200px
-);
-
-$grid-max-widths--slim: (
-  sm: none,
-  md: none,
-  lg: 780px,
-  xl: 800px,
-  xxl: 980px
-);
-
-$grid-max-widths--fat: (
-  sm: none,
-  md: none,
-  lg: 1040px,
-  xl: 1180px,
-  xxl: 1300px
-);
+$gutter: 30px;

@@ -19,6 +19,16 @@
   }
 }
 
+// #1 0.01px для IE11, ткк колонки в нем ломаются, например 3 колонки
+@mixin calc-column-width($count-columns, $gap: $gutter) {
+  width: calc((100% - #{$gap} * #{$count-columns - 1} - 0.01px) / #{$count-columns}); // #1
+  margin-right: $gap;
+
+  &:nth-child(#{$count-columns}n) {
+    margin-right: 0;
+  }
+}
+
 @mixin dotted-link($size: 2px) {
   border-bottom: $size solid transparent;
   background-origin: border-box;
@@ -117,17 +127,17 @@
   @include mq-min(768px) {
     .alignleft {
       float: left;
-      margin-right: $grid-gutter-width;
+      margin-right: $gutter;
     }
 
     .alignright {
       float: right;
-      margin-left: $grid-gutter-width;
+      margin-left: $gutter;
     }
   }
 }
 
-@mixin visuallyhidden {
+@mixin visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
