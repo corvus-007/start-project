@@ -1,0 +1,95 @@
+.textual {
+  font-size: rem(20);
+  font-weight: 400;
+  // font-family: $secondary-font;
+
+  & > * + *:not(li) {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  & > div {
+    max-width: 100%;
+  }
+
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    font-weight: 500;
+    font-family: $primary-font;
+  }
+
+  & > h2 {
+    font-size: rem(28);
+  }
+
+  & > h3 {
+    font-size: rem(25);
+  }
+
+  & > * + h2 {
+    margin-top: 3rem;
+  }
+
+  & > * + h3 {
+    margin-top: 2.5rem;
+  }
+
+  & > h2 + * {
+    margin-top: 1rem;
+  }
+
+  & > h3 + * {
+    margin-top: 0.9rem;
+  }
+
+  & > h4 + * {
+    margin-top: 0.8rem;
+  }
+
+  & > h2 + h3 {
+    // margin-top: 0.8rem;
+  }
+
+  & > img,
+  p > img,
+  div > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  & > ul {
+    li {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -1em;
+        top: 0;
+        z-index: -1;
+        width: em(20, 16);
+        height: em(20, 16);
+        border-radius: 50%;
+        background-color: $warning-color;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  @include mq-min(1024px) {
+    .alignleft {
+      float: left;
+      margin-right: $gutter;
+    }
+
+    .alignright {
+      float: right;
+      margin-left: $gutter;
+    }
+  }
+}

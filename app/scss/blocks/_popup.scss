@@ -1,19 +1,15 @@
 .popup {
   width: calc(100% - #{($gutter / 2)});
   max-width: 500px;
-  padding: ($gutter * 2);
-
-  @include mq-min(768px) {
-    padding: ($gutter * 3);
-  }
+  padding: 40px;
+  border-radius: 4px;
 }
 
 .popup__title {
   margin: 0;
   margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.15;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  font-size: 1.65rem;
 }

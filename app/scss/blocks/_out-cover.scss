@@ -1,0 +1,52 @@
+.out-cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  height: 100%;
+  padding: 20px;
+  padding-top: 85px;
+  transform: scale(1.2);
+  color: $base-color;
+  background-color: #ffffff;
+  transition: $duration * 2;
+  pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, visibility;
+  visibility: hidden;
+
+  &--opened {
+    transform: scale(1);
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.out-cover__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.out-cover__close-wrapper {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.out-cover__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.out-cover__main-nav-wrapper {
+
+}

@@ -1,140 +1,57 @@
-@mixin make-button() {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: rem(212px);
-  padding: rem(11) rem(15);
+  min-width: 220px;
+  padding: 15px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $primary-font;
   text-align: center;
-  font-weight: 800;
-  font-size: rem(13);
-  font-family: $secondary-font;
   text-decoration: none;
   text-transform: uppercase;
-  line-height: normal;
+  color: #ffffff;
+  background-color: $accent-color;
+  border: 1px solid transparent;
+  letter-spacing: 0.025em;
+  box-sizing: border-box;
+  box-shadow: 0 0px 12px rgba($accent-color, 0.2);
+  border-radius: 4px;
   outline: none;
   user-select: none;
-  background-color: transparent;
-  border: 1px solid;
-  letter-spacing: 0.1rem;
-  box-sizing: border-box;
-  transition-property: background, color, border-color;
-  transition-duration: ($duration * 2);
+  transition: $duration * 2;
   cursor: pointer;
-}
-
-@mixin --button-small() {
-  padding-top: rem(8);
-  padding-bottom: rem(8);
-  font-size: rem(14);
-}
-
-@mixin --button-large() {
-  padding: rem(18) rem(40);
-  font-size: rem($font-size--large);
-}
-
-@mixin --button-black() {
-  color: $black-color;
 
   &:hover,
   &:focus {
-    color: $white-color;
-    border-color: transparent;
-    background-color: $black-color;
+    color: #ffffff;
+    background-color: lighten($accent-color, 6%);
+    box-shadow: 0 0px 20px rgba($accent-color, 0.5);
+
   }
 
   &:active {
-    background-color: $black-color;
+    color: #ffffff;
+    background-color: darken($accent-color, 6%);
+  }
+
+  &--fluid {
+    width: 100%;
   }
 }
 
-@mixin --button-white() {
-  color: $white-color;
+.button__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: currentColor;
 
-  &:hover,
-  &:focus {
-    color: $black-color;
-    border-color: transparent;
-    background-color: $white-color;
+  &--left {
+    margin-right: 6px;
   }
 
-  &:active {
-    background-color: $white-color;
-  }
-}
-
-@mixin --button-action() {
-  color: $accent-color;
-
-  &:hover,
-  &:focus {
-    color: $white-color;
-    border-color: transparent;
-    background-color: $accent-color;
-  }
-
-  &:active {
-    background-color: $accent-color;
+  &--right {
+    margin-left: 6px;
   }
 }
-
-@mixin --button-submit() {
-  color: $success-color;
-
-  &:hover,
-  &:focus {
-    color: $white-color;
-    border-color: transparent;
-    background-color: $success-color;
-  }
-
-  &:active {
-    background-color: $success-color;
-  }
-}
-
-.button-wrapper {
-  display: flex;
-  align-items: center;
-
-  &::before,
-  &::after {
-    content: "";
-    height: 1px;
-    flex-grow: 1;
-    background-color: currentColor;
-  }
-
-  &::before {
-    margin-right: rem(10);
-  }
-
-  &::after {
-    margin-left: rem(10);
-  }
-}
-
-.button {
-  @include make-button();
-  @include --button-black();
-
-  // &--small {
-  //   @include --button-small();
-  // }
-
-  // &--large {
-  //   @include --button-large();
-  // }
-}
-
-// .button__icon {
-//   fill: currentColor;
-
-//   &:first-child {
-//     margin-right: 0.5em;
-//   }
-
-//   &:last-child {
-//     margin-left: 0.5em;
-//   }
-// }

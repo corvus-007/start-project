@@ -1,0 +1,41 @@
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.field__label {
+  margin-bottom: 6px;
+  margin-right: auto;
+  font-weight: 600;
+  font-size: rem(16);
+
+  .field--required &::after {
+    content: "*";
+    font-size: rem(14);
+    vertical-align: super;
+    color: $danger-color;
+  }
+}
+
+.field__control {
+  width: 100%;
+  position: relative;
+}
+
+.field__input {
+
+}
+
+.field__text {
+  display: block;
+  margin-top: 5px;
+  font-size: rem(14);
+  line-height: 1.25;
+  color: $muted-color;
+
+  .checkbox &,
+  .radiobox & {
+    margin-top: 0;
+  }
+}

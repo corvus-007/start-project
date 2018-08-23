@@ -3,19 +3,19 @@
 @import "mixins";
 @import "mixins-containers";
 
-@import "normalize";
-
 // Global
 @import "global/fonts";
-// @import "global/grid";
 @import "global/base";
 @import "global/layout";
 
 // Vendors
 @import "../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox";
+@import "../../node_modules/slick-carousel/slick/slick.scss";
 
 // Blocks
 @import "blocks/button";
+@import "blocks/input";
+@import "blocks/field";
 @import "blocks/form";
 @import "blocks/table";
 @import "blocks/popup";
@@ -24,9 +24,10 @@
 @import "blocks/custom-ul";
 @import "blocks/main-header";
 @import "blocks/main-nav";
-@import "blocks/hamburger-menu";
-@import "blocks/index-slider";
-@import "blocks/page";
-@import "blocks/archive-events";
+@import "blocks/out-cover-toggle";
+@import "blocks/textual";
+
+// @import "blocks/page";
 @import "blocks/main-footer";
+@import "blocks/out-cover";
 @import "blocks/socials";

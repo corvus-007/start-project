@@ -17,7 +17,7 @@ td {
   border: 1px solid #364f6b;
   padding: rem(8);
   text-align: left;
-  transition: ($duration / 2);
+  transition: $duration / 2;
 }
 
 thead {
