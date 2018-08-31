@@ -1,7 +1,6 @@
 window.outCover = (function () {
   'use strict';
 
-  var $ = window.jQuery;
   var outCover = document.querySelector('.out-cover');
   var outCoverToggle = document.querySelector('.out-cover-toggle');
   var scrollWidth = window.util.getScrollbarWidth();
