@@ -27,7 +27,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.2",
     "slick-carousel": "^1.8.1",
-    "inputmask": "^4.0.2",
+    "inputmask": "^4.0.3",
     "svg4everybody": "^2.1.9"
   }
 }
