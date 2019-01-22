@@ -1,21 +1,21 @@
 {
   "name": "start-project",
   "devDependencies": {
-    "autoprefixer": "^9.3.1",
+    "autoprefixer": "^9.4.6",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-file-include": "^2.0.1",
     "gulp-gh-pages": "^0.5.4",
     "gulp-include": "^2.3.1",
-    "gulp-plumber": "^1.2.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-svgmin": "^2.1.0",
-    "gulp-svgstore": "^7.0.0",
+    "gulp-svgstore": "^7.0.1",
     "gulp-uglify": "^3.0.1",
     "run-sequence": "^2.2.1"
   },
@@ -25,9 +25,9 @@
     "deploy": "npm run build && gulp deploy"
   },
   "dependencies": {
-    "@fancyapps/fancybox": "^3.5.2",
+    "@fancyapps/fancybox": "^3.5.6",
     "slick-carousel": "^1.8.1",
-    "inputmask": "^4.0.3",
+    "inputmask": "^4.0.6",
     "svg4everybody": "^2.1.9"
   }
 }
