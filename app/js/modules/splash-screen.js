@@ -1,4 +1,4 @@
-window.splashScreen = (function (window, $) {
+window.splashScreen = (function (window) {
   'use strict';
 
   var splashScreen = document.querySelector('.splash-screen');
@@ -15,4 +15,4 @@ window.splashScreen = (function (window, $) {
     document.body.style.overflowY = '';
     document.body.style.paddingRight = '';
   });
-})(window, jQuery);
+})(window);

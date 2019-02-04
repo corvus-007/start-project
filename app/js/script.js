@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   svg4everybody();
-  console.log('script.js');
+
+  console.log(`script.js`);
 });
