@@ -28,3 +28,11 @@ $context-default: $font-size;
 
   @return ($target / $context) * 1rem;
 }
+
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers})
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers})
+}

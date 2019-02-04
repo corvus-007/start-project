@@ -1,157 +1,184 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var plumber = require('gulp-plumber');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var browserSync = require('browser-sync').create();
-var minify = require('gulp-csso');
-var include = require('gulp-include');
-var fileinclude = require('gulp-file-include');
-var rename = require('gulp-rename');
-var svgstore = require('gulp-svgstore');
-var svgmin = require('gulp-svgmin');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var run = require('run-sequence');
-var del = require('del');
-var ghPages = require('gulp-gh-pages');
+/* global require */
+const {
+  src,
+  dest,
+  watch,
+  series,
+  parallel
+} = require('gulp');
 
-gulp.task('style', function () {
-  return (gulp
-    .src('app/scss/style.scss')
-    .pipe(
-      plumber({
-        errorHandler: function (err) {
-          console.log(err);
-        }
-      })
-    )
-    .pipe(
-      sass
-      .sync({
-        outputStyle: 'expanded'
-      })
-      .on('error', sass.logError)
-    )
-    .pipe(
-      postcss([
-        autoprefixer({
-          browsers: ['last 2 version']
-        })
-      ])
-    )
-    // .pipe(minify())
-    .pipe(gulp.dest('build/'))
-    .pipe(browserSync.stream()));
-});
+const plumber = require('gulp-plumber');
+const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const fileinclude = require('gulp-file-include');
+const include = require('gulp-include');
+const svgstore = require('gulp-svgstore');
+const browserSync = require('browser-sync').create();
+const autoprefixer = require('autoprefixer');
+const del = require('del');
+const ghPages = require('gulp-gh-pages');
 
-gulp.task('plugins-js', function () {
-  gulp
-    .src('app/js/plugins.js')
+const isDevBuild = process.env.NODE_ENV !== 'production';
+const folder = {
+  src: 'app',
+  build: 'build'
+};
+
+function stylesDev(cb) {
+  return src([`${folder.src}/scss/style.scss`])
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err);
+      }
+    }))
+    .pipe(sass())
+    .pipe(postcss([autoprefixer({
+      browsers: ['last 2 version']
+    })]))
+    .pipe(dest(`${folder.build}/`))
+    .pipe(browserSync.stream());
+
+  cb();
+}
+
+function stylesProduction(cb) {
+  return src([`${folder.src}/scss/style.scss`], { sourcemaps: true })
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err);
+      }
+    }))
+    .pipe(sass())
+    .pipe(postcss([autoprefixer({
+      browsers: ['last 2 version']
+    }), cssnano]))
+    .pipe(dest(`${folder.build}/`))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(dest(`${folder.build}/`, {
+      sourcemaps: '.'
+    }))
+    .pipe(browserSync.stream());
+
+  cb();
+}
+
+function pluginsJSDev(cb) {
+  src(`${folder.src}/js/plugins.js`)
+    .pipe(include())
+    .pipe(dest(`${folder.build}/js`))
+    .pipe(browserSync.stream());
+
+  cb();
+}
+
+function pluginsJSProduction() {
+  src(`${folder.src}/js/plugins.js`)
     .pipe(include())
     .pipe(uglify())
-    .pipe(gulp.dest('build/js'))
+    .pipe(dest(`${folder.build}/js`))
     .pipe(browserSync.stream());
-});
+}
 
-gulp.task('modules-js', function () {
-  gulp
-    .src(['app/js/modules.js'])
+function modulesJS(cb) {
+  return src(`${folder.src}/js/modules.js`)
     .pipe(include())
-    .pipe(gulp.dest('build/js'))
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
+    .pipe(dest(`${folder.build}/js`))
     .pipe(browserSync.stream());
-});
 
-gulp.task('copy-script', function () {
-  gulp
-    .src([
-      'app/js/*.{js,json}',
-      '!app/js/plugins/**',
-      '!app/js/modules/**',
-      '!app/js/modules.js',
-      '!app/js/plugins.js'
-    ])
-    .pipe(gulp.dest('build/js'))
+  cb();
+}
+
+function copyJS(cb) {
+  return src([`${folder.src}/js/*.{js,json}`, `!${folder.src}/js/modules.js`, `!${folder.src}/js/plugins.js`])
+    .pipe(include())
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
+    .pipe(dest(`${folder.build}/js`))
     .pipe(browserSync.stream());
-});
 
-gulp.task('fileinclude', function () {
-  gulp
-    .src('app/*.html')
-    .pipe(
-      fileinclude({
-        indent: true
-      })
-    )
-    .pipe(gulp.dest('build'));
-});
+  cb();
+}
 
-gulp.task('copy-images', function () {
-  return gulp.src('app/images/**/*').pipe(gulp.dest('build/images'));
-});
+function includeHtml(cb) {
+  return src(`${folder.src}/*.html`)
+    .pipe(fileinclude({
+      indent: true
+    }))
+    .pipe(dest(`${folder.build}/`));
 
-gulp.task('make-symbols', function () {
-  return gulp
-    .src('build/images/svg-symbols/*.svg')
-    .pipe(svgmin())
-    .pipe(
-      svgstore({
-        inlineSvg: true
-      })
-    )
+  cb();
+}
+
+function copyImages(cb) {
+  return src([`${folder.src}/images/**/*`, `!${folder.src}/images/svg-symbols`])
+    .pipe(dest(`${folder.build}/images`));
+
+  cb();
+}
+
+function makeSymbols(cb) {
+  return src(`${folder.src}/images/svg-symbols/**/*.svg`)
+    .pipe(svgstore())
     .pipe(rename('symbols.svg'))
-    .pipe(gulp.dest('build/images'));
-});
+    .pipe(dest(`${folder.build}/images`));
 
-gulp.task('copy-fonts', function () {
-  return gulp.src('app/fonts/**/*.{woff,woff2}').pipe(gulp.dest('build/fonts'));
-});
+  cb();
+}
 
-gulp.task('copy-root-htmls', function () {
-  return gulp.src('app/*.html').pipe(gulp.dest('build'));
-});
+function copyFonts(cb) {
+  return src(`${folder.src}/fonts/**/*.{woff,woff2}`)
+    .pipe(dest(`${folder.build}/fonts`));
 
-gulp.task('clean', function () {
-  return del('build');
-});
+  cb();
+}
 
-gulp.task('build', function (fn) {
-  run(
-    'clean',
-    'copy-root-htmls',
-    'copy-fonts',
-    'copy-images',
-    'copy-script',
-    'style',
-    'plugins-js',
-    'modules-js',
-    'fileinclude',
-    'make-symbols',
-    fn
-  );
-});
+function clean(cb) {
+  return del(`${folder.build}`);
 
-gulp.task('serve', function () {
+  cb();
+}
+
+function serve(cb) {
   browserSync.init({
-    server: './build'
+    server: folder.build
   });
 
-  gulp.watch('app/scss/**/*.scss', function () {
-    setTimeout(function () {
-      gulp.start('style');
-    }, 500);
-  });
-  gulp.watch('app/fonts/**/*', ['copy-fonts']);
-  gulp.watch('app/images/**/*', ['copy-images']);
-  gulp.watch('app/js/*.{js,json}', ['copy-script']);
-  gulp.watch('build/images/svg-symbols/*.svg', ['make-symbols']);
-  gulp.watch(['app/js/plugins.js', 'app/js/plugins/*.js'], ['plugins-js']);
-  gulp.watch(['app/js/modules.js', 'app/js/modules/*.js'], ['modules-js']);
-  gulp
-    .watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude'])
-    .on('change', browserSync.reload);
-});
+  watch(`${folder.src}/fonts/**/*`, copyFonts);
+  watch(`${folder.src}/images/**/*`, copyImages);
+  watch([`${folder.src}/blocks/**/*.html`, `${folder.src}/*.html`], includeHtml).on('change', browserSync.reload);
+  watch(`${folder.src}/images/svg-symbols/**/*`, makeSymbols);
+  watch([`${folder.src}/js/*.{js,json}`], copyJS);
+  watch([`${folder.src}/js/plugins/*.js`, `${folder.src}/js/plugins.js`], pluginsJSDev);
+  watch([`${folder.src}/js/modules/*.js`, `${folder.src}/js/modules.js`], modulesJS);
 
-gulp.task('deploy', function () {
-  return gulp.src('./build/**/*').pipe(ghPages());
-});
+  cb();
+}
+
+function deployProject(cb) {
+  return src(`${folder.build}/**/*`).pipe(ghPages());
+
+  cb();
+}
+
+const buildDev = series(clean, parallel(stylesDev, copyImages, copyJS, modulesJS, pluginsJSDev, copyFonts, includeHtml, makeSymbols));
+
+const buildProduction = series(clean, parallel(stylesProduction, copyImages, copyJS, modulesJS, pluginsJSProduction, copyFonts, includeHtml, makeSymbols));
+
+if (isDevBuild) {
+  exports.build = buildDev;
+} else {
+  exports.build = buildProduction;
+}
+
+exports.serve = series(buildDev, serve);
+exports.deploy = deployProject;
